@@ -1,0 +1,68 @@
+{
+    "Event": {
+        "title": "South Lake Union Exploration",
+        "participants": 6,
+        "location": "South Lake Union, Seattle, WA",
+        "mode_of_transport": "Rental Scooters/Bikes",
+        "budget_per_person": 120,
+        "duration": 4,
+        "start_time": "10:50"
+    },
+    "Activities": [
+        {
+            "id": 1,
+            "title": "Start at South Lake Union Park",
+            "location": "860 Terry Ave N, Seattle, WA 98109",
+            "description": "Meet up at South Lake Union Park. Rent scooters/bikes to start the city exploration.",
+            "start_time": "10:50",
+            "end_time": "11:20",
+            "cost": 20
+        },
+        {
+            "id": 2,
+            "title": "Visit the Museum of History and Industry (MOHAI)",
+            "location": "860 Terry Ave N, Seattle, WA 98109",
+            "description": "A short ride to MOHAI. Explore Seattle's history. (Please note, the museum visit will be from outside to keep most of the activities outdoor)",
+            "start_time": "11:25",
+            "end_time": "12:00",
+            "cost": 22
+        },
+        {
+            "id": 3,
+            "title": "Head to The Center for Wooden Boats",
+            "location": "1010 Valley St, Seattle, WA 98109",
+            "description": "Enjoy viewing various wooden boats and marine history at this outdoor exhibit.",
+            "start_time": "12:10",
+            "end_time": "12:40",
+            "cost": 0
+        },
+        {
+            "id": 4,
+            "title": "Ride to Cherry Street Coffee",
+            "location": "2719 1st Ave, Seattle, WA 98121",
+            "description": "A leisurely ride to Cherry Street Coffee. Enjoy the views and the city vibes.",
+            "start_time": "12:50",
+            "end_time": "13:10",
+            "cost": 0
+        },
+        {
+            "id": 5,
+            "title": "Monopoly at Cherry Street Coffee",
+            "location": "2719 1st Ave, Seattle, WA 98121",
+            "description": "Enjoy a game of Monopoly while sipping on some delightful coffee and light snacks.",
+            "start_time": "13:10",
+            "end_time": "14:30",
+            "cost": 20
+        },
+        {
+            "id": 6,
+            "title": "Return to South Lake Union Park",
+            "location": "860 Terry Ave N, Seattle, WA 98109",
+            "description": "Wind down with a leisurely ride back to the starting point at South Lake Union Park.",
+            "start_time": "14:40",
+            "end_time": "15:00",
+            "cost": 0
+        }
+    ],
+    "total_cost_per_person": 62
+}
