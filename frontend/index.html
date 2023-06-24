@@ -1,17 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sixer</title>
+    <title>Sixer Fun House</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="./styles.css">
 
     <!-- Styling: using bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarStyle">
+        <a class="navbar-brand" href="/"><h3>Sixer</h3></a>
+    </nav>
+    <br>
+    <div class="welcome-div">Welcome to Sixer, User. Let's have some fun!</div>
 
-    <div class=""></div>
+    <div class="form-title">
+        <h3>Tell us a bit more about you ...?</h3>
+    </div>
+
+    <div class="form">
+        <div class="form-row">
+            <div class="form-label">
+                Environment
+            </div>
+            <div class="form-input">
+                <select name="env" id="env">
+                    <option value="indoors">Indoors</option>
+                    <option value="outdoors">Outdoors</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                Travel Mode
+            </div>
+            <div class="form-input">
+                <select name="travel-mode" id="travel-mode">
+                    <option value="volvo">Walking</option>
+                    <option value="saab">Biking</option>
+                    <option value="mercedes">Driving</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                Budget
+            </div>
+            <div class="form-input">
+                <select name="budget" id="budget">
+                    <option value="15">&lt;$15</option>
+                    <option value="50">&lt;$50</option>
+                    <option value="100">&lt;$100</option>
+                    <option value="200">&lt;$150</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                Experience
+            </div>
+            <div class="form-input">
+                <select name="experience" id="experience">
+                    <option value="eating">Eat</option>
+                    <option value="relax">Relax</option>
+                    <option value="explore">Explore</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                Search Radius
+            </div>
+            <div class="form-input">
+                <select name="search-radius" id="search-radius">
+                    <option value="1">1 mile</option>
+                    <option value="5">5 miles</option>
+                    <option value="7">7 miles</option>
+                    <option value="10">10 miles</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                Duration
+            </div>
+            <div class="form-input">
+                <select name="duration" id="duration">
+                    <option value="1">1 hour</option>
+                    <option value="1.5">1.5 hours</option>
+                    <option value="2">2 hours</option>
+                    <option value="3">3 hours</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+    </div>
 </body>
 </html>
