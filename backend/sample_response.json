@@ -1,68 +1,72 @@
 {
-    "Event": {
-        "title": "South Lake Union Exploration",
-        "participants": 6,
-        "location": "South Lake Union, Seattle, WA",
-        "mode_of_transport": "Rental Scooters/Bikes",
-        "budget_per_person": 120,
-        "duration": 4,
-        "start_time": "10:50"
-    },
-    "Activities": [
-        {
-            "id": 1,
-            "title": "Start at South Lake Union Park",
-            "location": "860 Terry Ave N, Seattle, WA 98109",
-            "description": "Meet up at South Lake Union Park. Rent scooters/bikes to start the city exploration.",
-            "start_time": "10:50",
-            "end_time": "11:20",
-            "cost": 20
-        },
-        {
-            "id": 2,
-            "title": "Visit the Museum of History and Industry (MOHAI)",
-            "location": "860 Terry Ave N, Seattle, WA 98109",
-            "description": "A short ride to MOHAI. Explore Seattle's history. (Please note, the museum visit will be from outside to keep most of the activities outdoor)",
-            "start_time": "11:25",
-            "end_time": "12:00",
-            "cost": 22
-        },
-        {
-            "id": 3,
-            "title": "Head to The Center for Wooden Boats",
-            "location": "1010 Valley St, Seattle, WA 98109",
-            "description": "Enjoy viewing various wooden boats and marine history at this outdoor exhibit.",
-            "start_time": "12:10",
-            "end_time": "12:40",
-            "cost": 0
-        },
-        {
-            "id": 4,
-            "title": "Ride to Cherry Street Coffee",
-            "location": "2719 1st Ave, Seattle, WA 98121",
-            "description": "A leisurely ride to Cherry Street Coffee. Enjoy the views and the city vibes.",
-            "start_time": "12:50",
-            "end_time": "13:10",
-            "cost": 0
-        },
-        {
-            "id": 5,
-            "title": "Monopoly at Cherry Street Coffee",
-            "location": "2719 1st Ave, Seattle, WA 98121",
-            "description": "Enjoy a game of Monopoly while sipping on some delightful coffee and light snacks.",
-            "start_time": "13:10",
-            "end_time": "14:30",
-            "cost": 20
-        },
-        {
-            "id": 6,
-            "title": "Return to South Lake Union Park",
-            "location": "860 Terry Ave N, Seattle, WA 98109",
-            "description": "Wind down with a leisurely ride back to the starting point at South Lake Union Park.",
-            "start_time": "14:40",
-            "end_time": "15:00",
-            "cost": 0
-        }
-    ],
-    "total_cost_per_person": 62
-}
+    "event": "Explore South Lake Union",
+    "groupSize": 6,
+    "transportation": "Rental Scooters/Bikes",
+    "budgetPerPerson": 120,
+    "totalEventDurationMinutes": 240,
+    "itinerary": [
+      {
+        "id": 1,
+        "activity": "Meet at South Lake Union Park",
+        "description": "Start your day by meeting at South Lake Union Park. Enjoy the scenic view and warm up for the day.",
+        "location": "South Lake Union Park, 860 Terry Ave N, Seattle, WA 98109",
+        "durationMinutes": 15,
+        "costPerPerson": 0,
+        "outdoors": true
+      },
+      {
+        "id": 2,
+        "activity": "Ride to MOHAI",
+        "description": "Ride your rental scooters/bikes to the Museum of History & Industry (MOHAI). Note: You won't be entering the museum in this plan.",
+        "location": "Museum of History & Industry, 860 Terry Ave N, Seattle, WA 98109",
+        "durationMinutes": 10,
+        "costPerPerson": 10,
+        "outdoors": true
+      },
+      {
+        "id": 3,
+        "activity": "Explore Lake Union's Cheshiahud Lake Union Loop",
+        "description": "Follow the Cheshiahud Lake Union Loop trail, stop at various points to enjoy the view and take pictures.",
+        "location": "Cheshiahud Lake Union Loop, Seattle, WA 98109",
+        "durationMinutes": 60,
+        "costPerPerson": 0,
+        "outdoors": true
+      },
+      {
+        "id": 4,
+        "activity": "Lunch Break at Daniel's Broiler",
+        "description": "Stop for a casual lunch at Daniel's Broiler. Enjoy the lake view while you eat.",
+        "location": "Daniel's Broiler, 809 Fairview Pl N, Seattle, WA 98109",
+        "durationMinutes": 60,
+        "costPerPerson": 30,
+        "outdoors": true
+      },
+      {
+        "id": 5,
+        "activity": "Ride to Cherry Street Coffee",
+        "description": "Ride your rental scooters/bikes to Cherry Street Coffee. Prepare for a friendly game of Monopoly.",
+        "location": "Cherry Street Coffee, 2719 1st Ave, Seattle, WA 98121",
+        "durationMinutes": 20,
+        "costPerPerson": 10,
+        "outdoors": true
+      },
+      {
+        "id": 6,
+        "activity": "Play Monopoly at Cherry Street Coffee",
+        "description": "Get competitive with a group game of Monopoly while enjoying a coffee or tea.",
+        "location": "Cherry Street Coffee, 2719 1st Ave, Seattle, WA 98121",
+        "durationMinutes": 60,
+        "costPerPerson": 15,
+        "outdoors": false
+      },
+      {
+        "id": 7,
+        "activity": "Ride back to South Lake Union Park",
+        "description": "End the day with a relaxing ride back to South Lake Union Park.",
+        "location": "South Lake Union Park, 860 Terry Ave N, Seattle, WA 98109",
+        "durationMinutes": 15,
+        "costPerPerson": 10,
+        "outdoors": true
+      }
+    ]
+  }  
