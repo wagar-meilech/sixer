@@ -4,6 +4,7 @@ from uuid import uuid4
 from json_dict_store import JSONDictStore
 
 bid_store = JSONDictStore('/tmp/bids.json')
+event_store = JSONDictStore('/tmp/events.json')
 
 app = web.Application()
 
@@ -28,11 +29,14 @@ async def submit_survey(request):
 
 @route('GET', '/event/{id}')
 async def get_event_info(request):
-    pass
+    event_id = request.match_info.get('id')
+    event = await bid_store.get(event_id)
+    return web.json_response(event)
 
 @route('GET', '/event')
 async def list_events(request):
-    pass
+    await event_store.load_data()
+    return web.json_response(event_store.data)
 
 # Bidding
 
