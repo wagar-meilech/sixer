@@ -1,0 +1,47 @@
+.navbarStyle {
+    padding: .5rem 1rem !important;
+}
+
+.welcome-div {
+    text-align: center;
+}
+
+.user-preferences-form {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-title {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.form {
+    margin-top: 3rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+.form-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    flex: 2;
+    display: flex;
+}
+
+.form-input {
+    flex: 7;
+    font-size: large;
+}
+
+select {
+    width: 100%;
+}
