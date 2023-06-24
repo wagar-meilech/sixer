@@ -1,3 +1,5 @@
+import asyncio
+
 from aiohttp import web
 from uuid import uuid4
 from eventgenerator import fill_sponsor, generate_random_event
@@ -7,6 +9,7 @@ from event_search import get_best_event, survey_defaults
 
 bid_store = JSONDictStore('/app/bids.json')
 event_store = JSONDictStore('/app/events.json')
+filled_event_store = JSONDictStore('/app/sponsored_events.json')
 
 app = web.Application()
 
@@ -61,23 +64,38 @@ async def submit_survey(request):
 
     return web.json_response({ "event_id": best_event_id, "raw_event": best_event })
 
-@route('GET', '/event/{id}')
-async def get_event_info(request):
+@route('POST', '/event/{id}/unwrap')
+async def unwrap_event(request):
     event_id = request.match_info.get('id')
-    event = await event_store.get(event_id)
 
+    event = await event_store.get(event_id)
     best_bid_id, best_bid = await get_best_bid(bid_store)
 
     if event and best_bid:
         event_copy = event.copy()
         print("Found best bid and event template. Bid ID:", best_bid_id)
         new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
+        await filled_event_store.set(event_id, new_event)
 
         best_bid['completed'] = True
 
         await bid_store.set(best_bid_id, best_bid)
 
-        return web.json_response({ 'event': new_event })
+    return web.json_response({ 'event_id': event_id, 'bid_id': best_bid_id }, status = 202)
+
+@route('GET', '/event/{id}')
+async def get_event_info(request):
+    event_id = request.match_info.get('id')
+
+    filled = await filled_event_store.get(event_id)
+
+    if filled:
+        return web.json_response({ 'event_id': event_id, 'event': filled, 'filled': True })
+
+    unfilled = await event_store.get(event_id)
+
+    if unfilled:
+        return web.json_response({ 'event_id': event_id, 'event': unfilled, 'filled': False })
 
     return web.json_response({ 'error': 'Not found' }, status = 404)
 
@@ -91,11 +109,15 @@ async def generate_event(request):
 
     print("Generating event for ID", event_id)
 
-    event = await generate_random_event()
+    async def create_event():
+        event = await generate_random_event()
+        await event_store.set(event_id, event)
 
-    await event_store.set(event_id, event)
+    asyncio.create_task(create_event())
 
-    return web.json_response({ 'event_id': event_id, 'raw_event': event })
+    return web.json_response({ 'event_id': event_id }, status = 202)
+
+
 
 # Bidding
 
