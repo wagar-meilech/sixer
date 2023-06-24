@@ -2,6 +2,7 @@ from aiohttp import web
 from uuid import uuid4
 
 from json_dict_store import JSONDictStore
+from event_search import get_best_event, survey_defaults
 
 bid_store = JSONDictStore('/tmp/bids.json')
 event_store = JSONDictStore('/tmp/events.json')
@@ -22,8 +23,21 @@ async def health_check(request):
 
 @route('POST', '/survey')
 async def submit_survey(request):
-    # Returns matched event ID
-    return uuid4()
+    data = await request.json()
+
+    survey_keys = survey_defaults().keys()
+
+    survey = {}
+
+    for key in survey_keys:
+        survey[key] = data.get(key)
+
+    await event_store.load_data()
+    events = event_store.data
+
+    best_event_id = get_best_event(survey, events)
+
+    return web.json_response({"event_id": best_event_id})
 
 @route('GET', '/event/{id}')
 async def get_event_info(request):
