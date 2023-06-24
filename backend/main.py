@@ -87,7 +87,7 @@ async def unwrap_event(request):
 
     if event and best_bid:
         event_copy = event.copy()
-        _logger.info("Found best bid and event template. Bid ID:", best_bid_id)
+        _logger.info(f"Found best bid and event template. Bid ID: {best_bid_id}")
         new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
         await filled_event_store.set(event_id, new_event)
 
@@ -121,7 +121,7 @@ async def list_events(request):
 async def generate_event(request):
     event_id = str(uuid4())
 
-    _logger.info("Generating event for ID", event_id)
+    _logger.info(f"Generating event for ID {event_id}")
 
     asyncio.create_task(create_event(event_id))
 
