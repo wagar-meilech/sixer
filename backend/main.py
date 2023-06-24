@@ -5,11 +5,15 @@ from json_dict_store import JSONDictStore
 
 bid_store = JSONDictStore('/tmp/bids.json')
 
+app = web.Application()
+
 def route(method, path):
     def decorator(handler):
         app.router.add_route(method, path, handler)
         return handler
     return decorator
+
+
 
 @route('GET', '/health')
 async def health_check(request):
@@ -51,7 +55,7 @@ async def create_bid(request):
 
     return web.json_response({"bid_id": bid_id})
 
-@route('GET', '/bid/{id}')
+@route('GET', '/bid')
 async def list_bids(request):
     await bid_store.load_data()
     return web.json_response(bid_store.data)
@@ -62,8 +66,6 @@ async def delete_bid(request):
     await bid_store.delete(bid_id)
     return web.json_response({"bid_id": bid_id})
 
-
-app = web.Application()
 
 if __name__ == '__main__':
     web.run_app(app)

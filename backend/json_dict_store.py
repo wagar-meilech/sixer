@@ -7,9 +7,12 @@ class JSONDictStore:
         self.data = {}
 
     async def load_data(self):
-        async with aiofiles.open(self.file_path, mode='r') as file:
-            content = await file.read()
-            self.data = json.loads(content)
+        try:
+            async with aiofiles.open(self.file_path, mode='r') as file:
+                content = await file.read()
+                self.data = json.loads(content)
+        except Exception:
+            self.data = {}
 
     async def commit(self):
         async with aiofiles.open(self.file_path, mode='w') as file:
