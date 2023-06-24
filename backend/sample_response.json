@@ -1,72 +1,64 @@
+
 {
-    "event": "Explore South Lake Union",
-    "groupSize": 6,
-    "transportation": "Rental Scooters/Bikes",
-    "budgetPerPerson": 120,
-    "totalEventDurationMinutes": 240,
-    "itinerary": [
-      {
-        "id": 1,
-        "activity": "Meet at South Lake Union Park",
-        "description": "Start your day by meeting at South Lake Union Park. Enjoy the scenic view and warm up for the day.",
-        "location": "South Lake Union Park, 860 Terry Ave N, Seattle, WA 98109",
-        "durationMinutes": 15,
-        "costPerPerson": 0,
-        "outdoors": true
-      },
-      {
-        "id": 2,
-        "activity": "Ride to MOHAI",
-        "description": "Ride your rental scooters/bikes to the Museum of History & Industry (MOHAI). Note: You won't be entering the museum in this plan.",
-        "location": "Museum of History & Industry, 860 Terry Ave N, Seattle, WA 98109",
-        "durationMinutes": 10,
-        "costPerPerson": 10,
-        "outdoors": true
-      },
-      {
-        "id": 3,
-        "activity": "Explore Lake Union's Cheshiahud Lake Union Loop",
-        "description": "Follow the Cheshiahud Lake Union Loop trail, stop at various points to enjoy the view and take pictures.",
-        "location": "Cheshiahud Lake Union Loop, Seattle, WA 98109",
-        "durationMinutes": 60,
-        "costPerPerson": 0,
-        "outdoors": true
-      },
-      {
-        "id": 4,
-        "activity": "Lunch Break at Daniel's Broiler",
-        "description": "Stop for a casual lunch at Daniel's Broiler. Enjoy the lake view while you eat.",
-        "location": "Daniel's Broiler, 809 Fairview Pl N, Seattle, WA 98109",
-        "durationMinutes": 60,
-        "costPerPerson": 30,
-        "outdoors": true
-      },
-      {
-        "id": 5,
-        "activity": "Ride to Cherry Street Coffee",
-        "description": "Ride your rental scooters/bikes to Cherry Street Coffee. Prepare for a friendly game of Monopoly.",
-        "location": "Cherry Street Coffee, 2719 1st Ave, Seattle, WA 98121",
-        "durationMinutes": 20,
-        "costPerPerson": 10,
-        "outdoors": true
-      },
-      {
-        "id": 6,
-        "activity": "Play Monopoly at Cherry Street Coffee",
-        "description": "Get competitive with a group game of Monopoly while enjoying a coffee or tea.",
-        "location": "Cherry Street Coffee, 2719 1st Ave, Seattle, WA 98121",
-        "durationMinutes": 60,
-        "costPerPerson": 15,
-        "outdoors": false
-      },
-      {
-        "id": 7,
-        "activity": "Ride back to South Lake Union Park",
-        "description": "End the day with a relaxing ride back to South Lake Union Park.",
-        "location": "South Lake Union Park, 860 Terry Ave N, Seattle, WA 98109",
-        "durationMinutes": 15,
-        "costPerPerson": 10,
-        "outdoors": true
-      }
-    ]
-  }  
+  "event_name": "Exploring South Lake Union",
+  "group_size": 6,
+  "event_duration": 240,
+  "transportation": "Rental Scooters/Bikes",
+  "budget_per_person": 120,
+  "activities": [
+  {
+  "activity_name": "Meet and Greet at Denny Park",
+  "activity_location": "Denny Park, Seattle, WA",
+  "distance_from_previous": 0,
+  "time_elapsed_minutes": 15,
+  "cost_per_person": 0,
+  "description": "Begin the adventure at Denny Park for introductions and group orientation.",
+  "sponsored": false
+  },
+  {
+  "activity_name": "Ride to Lake Union Park",
+  "activity_location": "Lake Union Park, Seattle, WA",
+  "distance_from_previous": 1,
+  "time_elapsed_minutes": 20,
+  "cost_per_person": 10,
+  "description": "Enjoy a scenic ride to Lake Union Park on rented bikes or scooters. Explore the park's amenities, including its green spaces, walking paths, and waterfront views.",
+  "sponsored": false
+  },
+  {
+  "activity_name": "Visit to the Museum of History & Industry (MOHAI)",
+  "activity_location": "Museum of History & Industry, Seattle, WA",
+  "distance_from_previous": 0.3,
+  "time_elapsed_minutes": 60,
+  "cost_per_person": 20,
+  "description": "Take a tour of the MOHAI to learn about Seattle's rich history and industry.",
+  "sponsored": false
+  },
+  {
+  "activity_name": "Game Time at Cherry Street Coffee",
+  "activity_location": "Cherry Street Coffee, 2719 1st Ave, Seattle, WA 98121",
+  "distance_from_previous": 0.8,
+  "time_elapsed_minutes": 60,
+  "cost_per_person": 15,
+  "description": "Ride over to Cherry Street Coffee. Relax and engage in a spirited game of Monopoly while enjoying some great coffee and pastries.",
+  "sponsored": true
+  },
+  {
+  "activity_name": "Ride and Explore Westlake Avenue",
+  "activity_location": "Westlake Ave, Seattle, WA",
+  "distance_from_previous": 0.7,
+  "time_elapsed_minutes": 30,
+  "cost_per_person": 10,
+  "description": "Enjoy a leisurely ride along Westlake Ave, soaking in the vibrant city atmosphere.",
+  "sponsored": false
+  },
+  {
+  "activity_name": "Visit to REI flagship store",
+  "activity_location": "REI Seattle Flagship Store, Seattle, WA",
+  "distance_from_previous": 0.2,
+  "time_elapsed_minutes": 45,
+  "cost_per_person": 0,
+  "description": "End the tour at the REI flagship store. Explore the store or grab a snack at the cafe.",
+  "sponsored": false
+  }
+  ]
+  }
