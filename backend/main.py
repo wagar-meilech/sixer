@@ -47,6 +47,7 @@ async def create_bid(request):
     location = data.get('location')
     activity = data.get('activity')
     price = data.get('price')
+    partner = data.get('partner')
 
     # Returns matched event ID
     bid_id = str(uuid4())
@@ -54,7 +55,9 @@ async def create_bid(request):
     await bid_store.set(bid_id, {
         'location': location,
         'activity': activity,
-        'price': price
+        'price': price,
+        'partner': partner,
+        'completed': False,
     })
 
     return web.json_response({"bid_id": bid_id})
