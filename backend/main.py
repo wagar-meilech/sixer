@@ -27,6 +27,22 @@ async def create_event(event_id):
     _logger.info(f"Saving event: {event_id}")
     await event_store.set(event_id, event)
 
+async def inject_sponsor(event_id, event_copy, best_bid_id, best_bid):
+
+    _logger.info(f"Found best bid and event template. Bid ID: {best_bid_id}")
+
+    _logger.info(f"Calling GPT")
+    new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
+    _logger.info(f"GPT done")
+
+    await filled_event_store.set(event_id, new_event)
+    _logger.info(f"Filled sponsor Bid ID: {best_bid_id}")
+
+    best_bid['completed'] = True
+
+    await bid_store.set(best_bid_id, best_bid)
+    _logger.info(f"Updated bid as completed: {best_bid_id}")
+
 async def get_best_bid(bid_store):
     bids = await bid_store.get_all()
 
@@ -88,15 +104,11 @@ async def unwrap_event(request):
 
     if event and best_bid:
         event_copy = event.copy()
-        _logger.info(f"Found best bid and event template. Bid ID: {best_bid_id}")
-        new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
-        await filled_event_store.set(event_id, new_event)
+        asyncio.create_task(inject_sponsor(event_id, event_copy, best_bid_id, best_bid))
 
-        best_bid['completed'] = True
+        return web.json_response({ 'event_id': event_id, 'bid_id': best_bid_id }, status = 202)
 
-        await bid_store.set(best_bid_id, best_bid)
-
-    return web.json_response({ 'event_id': event_id, 'bid_id': best_bid_id }, status = 202)
+    return web.json_response({ 'error': 'Not found' }, status = 404)
 
 @route('GET', '/event/{id}')
 async def get_event_info(request):
