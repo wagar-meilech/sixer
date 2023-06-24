@@ -51,9 +51,7 @@ app.get('/home', (req, res) => {
 
 app.post('/customer-preferences', (req, res) => {
     req = JSON.parse(req);
-
-    req = JSON.parse(req);
-    console.log(req.body)
+    console.log(req)
     res.send(req);
 });
 

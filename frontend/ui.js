@@ -47,4 +47,23 @@ function onSubmit(){
 
     console.log(jsonObject);
 
+    fetchEvent(jsonObject);
+}
+
+
+async function fetchEvent(userPreference) {
+    try {
+        const response = await fetch("http://localhost:3000//customer-preferences", {
+            method: "POST", // or 'PUT'
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userPreference),
+        });
+  
+        const result = await response.json();
+        console.log("Success:", result);
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
