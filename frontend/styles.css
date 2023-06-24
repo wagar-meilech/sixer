@@ -7,7 +7,7 @@
 }
 
 .user-preferences-form {
-    margin-top: 3rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -20,8 +20,8 @@
 
 .form {
     margin-top: 3rem;
-    margin-left: 20rem;
-    margin-right: 20rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
     display: flex;
     flex-direction: column;
 }

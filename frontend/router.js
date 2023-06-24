@@ -1,0 +1,1 @@
+window.history.pushState({ data: 'some data' },'Some history entry title', '/some-path');
