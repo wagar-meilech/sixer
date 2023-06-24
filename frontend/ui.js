@@ -1,3 +1,16 @@
+let pos = [0, 0];
+function positionRead(position){
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    pos[0] = position.coords.latitude;
+    pos[1] = position.coords.longitude;
+    console.log("Successfully accessed geolocation.");
+}
+
+if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(positionRead);
+}
+
 function onSubmit(){
     // Environment
     const environment = document.getElementById("environment").value;
@@ -16,16 +29,21 @@ function onSubmit(){
 
     // Duration
     const duration = document.getElementById("duration").value;
-
-    const jsonObject = {"environment" : environment,
-                        "travel-mode" : travelMode,
-                        "budget" : budget,
-                        "experience" : experience,
-                        "search-radius" : searchRadius,
-                        "duration" : duration
-                        };
     
     // JSON.stringify(jsonObject);
+    
+    const jsonObject = {
+        "environment" : environment,
+        "travel-mode" : travelMode,
+        "budget" : budget,
+        "experience" : experience,
+        "search-radius" : searchRadius,
+        "duration" : duration,
+        "position" : {
+                        "latitude" : pos[0],
+                        "longitude" : pos[1]
+                     }
+    };
 
     console.log(jsonObject);
 
