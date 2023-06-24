@@ -1,4 +1,4 @@
-from random import random
+import random
 import sys
 
 def survey_defaults():
