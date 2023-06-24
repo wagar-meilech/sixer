@@ -27,19 +27,11 @@ const DEFAULT_PORT = process.env.PORT || 3000;
 // initialize express.
 const app = express();
 
-/** bodyParser.urlencoded(options)
- * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
- * and exposes the resulting object (containing the keys and values) on req.body
- */
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-/**bodyParser.json(options)
- * Parses the text as JSON and exposes the resulting object on req.body.
- */
-app.use(bodyParser.json());
+// For parsing application/json
+app.use(express.json());
+ 
+// For parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
 // Setup app folders.
 app.use(express.static(__dirname));
@@ -50,9 +42,8 @@ app.get('/home', (req, res) => {
 });
 
 app.post('/customer-preferences', (req, res) => {
-    req = JSON.parse(req);
-    console.log(req)
-    res.send(req);
+    console.log(req.body)
+    res.send(req.body);
 });
 
 app.listen(DEFAULT_PORT, () => {
