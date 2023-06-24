@@ -10,6 +10,7 @@ class JSONDictStore:
         try:
             async with aiofiles.open(self.file_path, mode='r') as file:
                 content = await file.read()
+                print("Updated data")
                 self.data = json.loads(content)
         except Exception as e:
             print("Failed to load data: ", e)
@@ -23,6 +24,10 @@ class JSONDictStore:
     async def get(self, key, default=None):
         await self.load_data()
         return self.data.get(key, default)
+
+    async def get_all(self):
+        await self.load_data()
+        return self.data
 
     async def set(self, key, value):
         await self.load_data()
