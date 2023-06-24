@@ -4,8 +4,8 @@ from uuid import uuid4
 from json_dict_store import JSONDictStore
 from event_search import get_best_event, survey_defaults
 
-bid_store = JSONDictStore('/tmp/bids.json')
-event_store = JSONDictStore('/tmp/events.json')
+bid_store = JSONDictStore('/app/bids.json')
+event_store = JSONDictStore('/app/events.json')
 
 app = web.Application()
 
@@ -35,9 +35,9 @@ async def submit_survey(request):
     await event_store.load_data()
     events = event_store.data
 
-    best_event_id = get_best_event(survey, events)
+    best_event_id, best_event = get_best_event(survey, events)
 
-    return web.json_response({"event_id": best_event_id})
+    return web.json_response({ "event_id": best_event_id, "event": best_event })
 
 @route('GET', '/event/{id}')
 async def get_event_info(request):

@@ -53,8 +53,8 @@ function onSubmit(){
 
 async function fetchEvent(userPreference) {
     try {
-        const response = await fetch("http://localhost:3000//customer-preferences", {
-            method: "POST", // or 'PUT'
+        const response = await fetch("http://localhost:3000/customer-preferences", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },

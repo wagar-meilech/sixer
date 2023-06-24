@@ -45,3 +45,25 @@
 select {
     width: 100%;
 }
+
+
+.container {
+    margin-top: 3rem;
+}
+
+.tab-pane {
+    padding: 2rem;
+}
+
+.custom-list-group-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.bid-name {
+    flex: 3
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}

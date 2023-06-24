@@ -11,7 +11,8 @@ class JSONDictStore:
             async with aiofiles.open(self.file_path, mode='r') as file:
                 content = await file.read()
                 self.data = json.loads(content)
-        except Exception:
+        except Exception as e:
+            print("Failed to load data: ", e)
             self.data = {}
 
     async def commit(self):

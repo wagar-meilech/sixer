@@ -1,26 +1,5 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require("body-parser");
-
-/**
- * Helper functions
- */
-function stringify(obj) {
-    let cache = [];
-    let str = JSON.stringify(obj, function(key, value) {
-      if (typeof value === "object" && value !== null) {
-        if (cache.indexOf(value) !== -1) {
-          // Circular reference found, discard key
-          return;
-        }
-        // Store value in our collection
-        cache.push(value);
-      }
-      return value;
-    });
-    cache = null; // reset the cache
-    return str;
-}
 
 const DEFAULT_PORT = process.env.PORT || 3000;
 const HOST = `0.0.0.0`;
@@ -28,19 +7,11 @@ const HOST = `0.0.0.0`;
 // initialize express.
 const app = express();
 
-/** bodyParser.urlencoded(options)
- * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
- * and exposes the resulting object (containing the keys and values) on req.body
- */
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-/**bodyParser.json(options)
- * Parses the text as JSON and exposes the resulting object on req.body.
- */
-app.use(bodyParser.json());
+// For parsing application/json
+app.use(express.json());
+ 
+// For parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
 // Setup app folders.
 app.use(express.static(__dirname));
@@ -50,10 +21,13 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/bids', (req, res) => {
+    res.sendFile(path.join(__dirname + '/bids.html'));
+});
+
 app.post('/customer-preferences', (req, res) => {
-    req = JSON.parse(req);
-    console.log(req)
-    res.send(req);
+    console.log(req.body)
+    res.send(req.body);
 });
 
 app.listen(DEFAULT_PORT, HOST, () => {
