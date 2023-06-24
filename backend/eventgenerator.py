@@ -119,10 +119,10 @@ async def generate_event_sponsorless(parameter_dict):
     }
     return survey_dict
 
-def fill_sponsor(sponsored_location, sponsored_activity, data):
+async def fill_sponsor(sponsored_location, sponsored_activity, data):
     # Find the sponsored activity
     for i, activity in enumerate(data["itinerary"]["activities"]):
         if activity["sponsored"]:
             # Call the function to generate sponsor and replace the old activity
-            data["itinerary"]["activities"][i] = generate_sponsor(sponsored_location, sponsored_activity, activity)
+            data["itinerary"]["activities"][i] = await generate_sponsor(sponsored_location, sponsored_activity, activity)
     return data

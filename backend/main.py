@@ -35,15 +35,16 @@ async def get_best_bid(bid_store):
     best_bid_id = None
 
     for bid_id, bid in bids.items():
-        if bids['partner']:
+        if 'partner' in bid and bid['partner'] == True:
             continue
 
-        price = float(bids['price'])
+        if 'price' in bid:
+            price = float(bid['price'])
 
-        if price > best_price:
-            best_price = price
-            best_bid = bid
-            best_bid_id = bid_id
+            if price > best_price:
+                best_price = price
+                best_bid = bid
+                best_bid_id = bid_id
 
     return best_bid_id, best_bid
 
