@@ -1,8 +1,9 @@
 import openai
 import json
+import os
 
 # Set up your OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = os.getenv("OPEN_AI_KEY")
 
 def call_chat_gpt(prompt):
 
