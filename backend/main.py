@@ -52,9 +52,9 @@ async def create_bid(request):
     bid_id = str(uuid4())
 
     await bid_store.set(bid_id, {
-        location,
-        activity,
-        price
+        'location': location,
+        'activity': activity,
+        'price': price
     })
 
     return web.json_response({"bid_id": bid_id})
