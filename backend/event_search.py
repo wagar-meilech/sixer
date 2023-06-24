@@ -13,7 +13,7 @@ def survey_defaults():
         'transportation': transportations,
         'budget': budgets,
         'activities': activities,
-        'distances': distances,
+        'distance': distances,
         'duration': duration
     }
 
@@ -32,6 +32,7 @@ def get_best_event(survey, event_map):
 
     best_score = sys.maxsize
     best_event = None
+    best_event_id = None
 
     for event_id, event in event_map.items():
         score = 0
@@ -40,6 +41,7 @@ def get_best_event(survey, event_map):
 
         if score < best_score:
             best_event = event
+            best_event_id = event_id
             best_score = score
 
-    return best_event
+    return best_event_id, best_event
