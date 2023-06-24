@@ -28,14 +28,6 @@ This section will list any prerequisites and how to install them.
 
 To use Sixer, simply visit the website, register, and complete the initial survey. Based on your preferences, you will be matched to different events. You can also participate in the auction system as a business entity and sponsor your own events.
 
-## Running Tests
-
-We use Jest for our tests. Run the following command in the root directory of the project to execute the tests:
-
-```
-npm run test
-```
-
 ## Contributing
 
 Contributions are what make the open-source community such an incredible place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
