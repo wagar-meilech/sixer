@@ -45,7 +45,10 @@ def get_best_event(survey, event_map):
     for event_id, event in event_map.items():
         score = 0
         for category, values in categories.items():
-            score += distance(event[category], survey[category], values)
+            try:
+                score += distance(event[category], survey[category], values)
+            except Exception as e:
+                print(f"Issue during survey parsing: Category: {category} Error: {e}")
 
         if score < best_score:
             best_event = event

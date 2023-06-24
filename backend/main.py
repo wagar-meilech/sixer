@@ -13,6 +13,10 @@ filled_event_store = JSONDictStore('/app/sponsored_events.json')
 
 app = web.Application()
 
+async def create_event(event_id):
+    event = await generate_random_event()
+    await event_store.set(event_id, event)
+
 async def get_best_bid(bid_store):
     bids = await bid_store.get_all()
 
@@ -109,11 +113,7 @@ async def generate_event(request):
 
     print("Generating event for ID", event_id)
 
-    async def create_event():
-        event = await generate_random_event()
-        await event_store.set(event_id, event)
-
-    asyncio.create_task(create_event())
+    asyncio.create_task(create_event(event_id))
 
     return web.json_response({ 'event_id': event_id }, status = 202)
 
