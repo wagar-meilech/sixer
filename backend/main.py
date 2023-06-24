@@ -4,8 +4,8 @@ from uuid import uuid4
 from json_dict_store import JSONDictStore
 from event_search import get_best_event, survey_defaults
 
-bid_store = JSONDictStore('/tmp/bids.json')
-event_store = JSONDictStore('/tmp/events.json')
+bid_store = JSONDictStore('/app/bids.json')
+event_store = JSONDictStore('/app/events.json')
 
 app = web.Application()
 

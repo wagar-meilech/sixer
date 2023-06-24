@@ -9,9 +9,9 @@ def survey_defaults():
     duration = [1, 1.5, 2, 3]
 
     return {
-        'environments': environments,
-        'transportations': transportations,
-        'budgets': budgets,
+        'environment': environments,
+        'transportation': transportations,
+        'budget': budgets,
         'activities': activities,
         'distances': distances,
         'duration': duration
