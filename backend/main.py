@@ -47,8 +47,7 @@ async def get_event_info(request):
 
 @route('GET', '/event')
 async def list_events(request):
-    await event_store.load_data()
-    return web.json_response(event_store.data)
+    return web.json_response(await event_store.get_all())
 
 # Bidding
 
@@ -76,8 +75,7 @@ async def create_bid(request):
 
 @route('GET', '/bid')
 async def list_bids(request):
-    await bid_store.load_data()
-    return web.json_response(bid_store.data)
+    return web.json_response(await bid_store.get_all())
 
 @route('DELETE', '/bid/{id}')
 async def delete_bid(request):
