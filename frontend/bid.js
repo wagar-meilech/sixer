@@ -24,7 +24,7 @@ async function postBid()
   
         const result = await response.json();
         console.log("Success:", result);
-        displayBids();
+        fetchBids();
     } catch (error) {
         console.error("Error:", error);
     }
@@ -50,32 +50,7 @@ async function fetchBids()
         });
   
         const result = await response.json();
-
-        result = 
-        {
-            "b5c24c74-fa98-4dfd-b58f-a53eb531ea5f": {
-                "location": "Cherry Street Coffee in Belltown", 
-                "activity": "Get coffee as a group", 
-                "price": 50, "completed": false
-            }, 
-            "74e6aefd-de04-47fe-9597-149d4db7b453": {
-                "location": "Bangrak Market in Belltown", 
-                "activity": "Get Thai food as a group", 
-                "price": 75, "completed": false
-            }, 
-            "472ea4a8-5ac6-400f-8854-769276c2cc38": {
-                "location": "instruct group to use Lime Scooters to get around", 
-                "activity": "Use Lime Scooters as your mode of transportation.", 
-                "price": 0.02, "partner": true, "completed": false
-            }, 
-            "3da226ac-3bea-47e3-8286-7366f2fa5e57": {
-                "location": "Eat Punani",
-                "activity": "Eat Punani", 
-                "price": "100", 
-                "partner": true, 
-                "completed": false
-            }
-        }
+        displayBids(result);
         console.log("Success:", result);
     } catch (error) {
         console.error("Error:", error);
@@ -83,38 +58,8 @@ async function fetchBids()
     console.log('Fetching bids');
 }
 
-function displayBids()
+function displayBids(result)
 {
-    result = 
-        {
-            "b5c24c74-fa98-4dfd-b58f-a53eb531ea5f": {
-                "location": "Cherry Street Coffee in Belltown", 
-                "activity": "Get coffee as a group", 
-                "price": 50, 
-                "completed": false
-            }, 
-            "74e6aefd-de04-47fe-9597-149d4db7b453": {
-                "location": "Bangrak Market in Belltown", 
-                "activity": "Get Thai food as a group", 
-                "price": 75, 
-                "completed": false
-            }, 
-            "472ea4a8-5ac6-400f-8854-769276c2cc38": {
-                "location": "instruct group to use Lime Scooters to get around", 
-                "activity": "Use Lime Scooters as your mode of transportation.", 
-                "price": 0.02, 
-                "partner": true, 
-                "completed": false
-            }, 
-            "3da226ac-3bea-47e3-8286-7366f2fa5e57": {
-                "location": "Eat Punani",
-                "activity": "Eat Punani", 
-                "price": "100", 
-                "partner": true, 
-                "completed": true
-            }
-        }
-    
     const list1 = document.getElementById("list-of-bids-1"); 
     const list2 = document.getElementById("list-of-bids-2"); 
     var bidsHtml1 = "";
@@ -178,8 +123,8 @@ async function deleteBid(bidId)
         console.error("Error:", error);
     }
 
-    displayBids();
+    fetchBids();
 }
 
-displayBids()
+fetchBids()
 
