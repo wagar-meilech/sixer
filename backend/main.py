@@ -14,8 +14,6 @@ def route(method, path):
         return handler
     return decorator
 
-
-
 @route('GET', '/health')
 async def health_check(request):
     return web.json_response({"status": "ok"})

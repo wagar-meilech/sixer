@@ -41,13 +41,6 @@ def generate_event(distance, location, environment,
         {"role": "user", "content": prompt},
     ]  
     
-    return call_chat_gpt(messages)
-
-
-event = json.loads(generate_event(
-        "10", "Seattle","Outdoors",
-        "Bikes", "Explore", "150",
-        "5", "The George", "Eating").to_dict()['content'])
-
-with open("event.json", 'w') as file:
-    json.dump(event, file)
+    response = call_chat_gpt(messages).to_dict()
+    
+    return json.loads(response['content'])
