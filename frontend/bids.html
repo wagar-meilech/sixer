@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sixer Fun House</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+        <link rel="stylesheet" href="./styles.css">
+        <!-- Styling: using bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarStyle">
+            <a class="navbar-brand" href="/"><h3>Sixer - Bids</h3></a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <button type="button" id="signIn" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add Bid</button>
+            </div>
+        </nav>
+        <br>
+    
+        <!-- Get events view -->
+        <div class="form-title">
+            <h3>Bids control user recommendations ...</h3>
+        </div>
+
+        <div class="container">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tab1">ACTIVE BIDS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab2">COMPLETE BIDS</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab1">
+                    <ul class="list-group">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A fourth item</li>
+                        <li class="list-group-item">And a fifth one</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="tab2">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bid Alkatraz</h5>
+                                <small>$500</small>
+                            </div>
+                            <p class="mb-1">This bid is in favor of Starbucks</p>
+                            <button type="button" class="btn btn-danger btn-small">Delete Bid</button>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bid Alkatraz</h5>
+                                <small>$500</small>
+                            </div>
+                            <p class="mb-1">This bid is in favor of Starbucks</p>
+                            <button type="button" class="btn btn-danger btn-small">Delete Bid</button>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Bid Alkatraz</h5>
+                                <small>$500</small>
+                            </div>
+                            <p class="mb-1">This bid is in favor of Starbucks</p>
+                            <button type="button" class="btn btn-danger btn-small">Delete Bid</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><h1>Adding a bid</h1></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="location"><h5>Location</h6></label>
+                            <input type="text" class="form-control" id="location" placeholder="Bid Location">
+                        </div>
+                        <div class="form-group">
+                            <label for="activity"><h5>Activity</h6></label>
+                            <input type="text" class="form-control" id="activity" placeholder="Bid Activity">
+                        </div>
+                        <div class="form-group">
+                            <label for="cost"><h5>Cost</h6></label>
+                            <input type="text" class="form-control" id="cost" placeholder="Activity Estimated Cost">
+                        </div>
+                        <div class="form-group">
+                            <label for="partner"><h5>Partner</h6></label>
+                            <input type="password" class="form-control" id="partner" placeholder="Yes/No">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="postBid()">Create Bid</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="./bid.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

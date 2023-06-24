@@ -1,26 +1,5 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require("body-parser");
-
-/**
- * Helper functions
- */
-function stringify(obj) {
-    let cache = [];
-    let str = JSON.stringify(obj, function(key, value) {
-      if (typeof value === "object" && value !== null) {
-        if (cache.indexOf(value) !== -1) {
-          // Circular reference found, discard key
-          return;
-        }
-        // Store value in our collection
-        cache.push(value);
-      }
-      return value;
-    });
-    cache = null; // reset the cache
-    return str;
-}
 
 const DEFAULT_PORT = process.env.PORT || 3000;
 
@@ -39,6 +18,10 @@ app.use(express.static(__dirname));
 // Set up a route for index.html
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+app.get('/bids', (req, res) => {
+    res.sendFile(path.join(__dirname + '/bids.html'));
 });
 
 app.post('/customer-preferences', (req, res) => {
