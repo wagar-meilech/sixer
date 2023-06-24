@@ -25,11 +25,6 @@ app.get('/bids', (req, res) => {
     res.sendFile(path.join(__dirname + '/bids.html'));
 });
 
-app.post('/customer-preferences', (req, res) => {
-    console.log(req.body)
-    res.send(req.body);
-});
-
 app.listen(DEFAULT_PORT, HOST, () => {
   console.log(`Sample app listening on ${HOST}:${DEFAULT_PORT}!`)
 });
