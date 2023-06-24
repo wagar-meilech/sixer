@@ -22,7 +22,7 @@ function onSubmit(){
     const budget = document.getElementById("budget").value;
 
     // Experience
-    const experience = document.getElementById("experience").value;
+    const activities = document.getElementById("activities").value;
 
     // Distance
     const searchRadius = document.getElementById("search-radius").value;
@@ -34,15 +34,15 @@ function onSubmit(){
     
     const jsonObject = {
         "environment" : environment,
-        "travel-mode" : travelMode,
+        "transportation" : travelMode,
         "budget" : budget,
-        "experience" : experience,
-        "search-radius" : searchRadius,
+        "activities" : activities,
+        "distance" : searchRadius,
         "duration" : duration,
-        "position" : {
-                        "latitude" : pos[0],
-                        "longitude" : pos[1]
-                     }
+        // "position" : {
+        //                 "latitude" : pos[0],
+        //                 "longitude" : pos[1]
+        //              }
     };
 
     console.log(jsonObject);
