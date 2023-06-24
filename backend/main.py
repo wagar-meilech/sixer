@@ -1,5 +1,6 @@
 from aiohttp import web
 from uuid import uuid4
+from eventgenerator import fill_sponsor, generate_random_event
 
 from json_dict_store import JSONDictStore
 from event_search import get_best_event, survey_defaults
@@ -8,6 +9,27 @@ bid_store = JSONDictStore('/app/bids.json')
 event_store = JSONDictStore('/app/events.json')
 
 app = web.Application()
+
+async def get_best_bid(bid_store):
+    bids = await bid_store.get_all()
+
+    best_price = 0
+    best_bid = None
+    best_bid_id = None
+
+    for bid_id, bid in bids.items():
+        if bids['partner']:
+            continue
+
+        price = float(bids['price'])
+
+        if price > best_price:
+            best_price = price
+            best_bid = bid
+            best_bid_id = bid_id
+
+    return best_bid_id, best_bid
+
 
 def route(method, path):
     def decorator(handler):
@@ -37,17 +59,43 @@ async def submit_survey(request):
 
     best_event_id, best_event = get_best_event(survey, events)
 
-    return web.json_response({ "event_id": best_event_id, "event": best_event })
+    return web.json_response({ "event_id": best_event_id, "raw_event": best_event })
 
 @route('GET', '/event/{id}')
 async def get_event_info(request):
     event_id = request.match_info.get('id')
-    event = await bid_store.get(event_id)
-    return web.json_response(event)
+    event = await event_store.get(event_id)
+
+    best_bid_id, best_bid = await get_best_bid(bid_store)
+
+    if event and best_bid:
+        event_copy = event.copy()
+        print("Found best bid and event template. Bid ID:", best_bid_id)
+        new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
+
+        best_bid['completed'] = True
+
+        await bid_store.set(best_bid_id, best_bid)
+
+        return web.json_response({ 'event': new_event })
+
+    return web.json_response({ 'error': 'Not found' }, status = 404)
 
 @route('GET', '/event')
 async def list_events(request):
     return web.json_response(await event_store.get_all())
+
+@route('POST', '/event')
+async def generate_event(request):
+    event_id = str(uuid4())
+
+    print("Generating event for ID", event_id)
+
+    event = await generate_random_event()
+
+    await event_store.set(event_id, event)
+
+    return web.json_response({ 'event_id': event_id, 'raw_event': event })
 
 # Bidding
 

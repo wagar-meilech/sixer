@@ -1,3 +1,4 @@
+from random import random
 import sys
 
 def survey_defaults():
@@ -16,6 +17,13 @@ def survey_defaults():
         'distance': distances,
         'duration': duration
     }
+
+def randomize(values):
+    new_dict = {}
+    for key, value in values.items():
+        new_dict[key] = random.choice(value)
+
+    return new_dict
 
 def distance(actual, goal, values):
     # Find the positions of the actual and goal values in the values array
