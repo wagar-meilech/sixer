@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require("body-parser");
 
+const https = require('https');
+
+
 /**
  * Helper functions
  */
@@ -54,7 +57,13 @@ app.post('/customer-preferences', (req, res) => {
     req = JSON.parse(req);
     console.log(req)
     res.send(req);
-});
+
+    https.get('https://jsonplaceholder.typicode.com/users', res => {
+      let data = [];
+      const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
+      console.log('Status Code:', res.statusCode);
+      console.log('Date in Response header:', headerDate);
+    });
 
 app.listen(DEFAULT_PORT, HOST, () => {
   console.log(`Sample app listening on ${HOST}:${DEFAULT_PORT}!`)
