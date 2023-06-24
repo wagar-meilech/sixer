@@ -7,14 +7,24 @@ from eventgenerator import fill_sponsor, generate_random_event
 from json_dict_store import JSONDictStore
 from event_search import get_best_event, survey_defaults
 
+import logging
+
+stdio_handler = logging.StreamHandler()
+stdio_handler.setLevel(logging.INFO)
+_logger = logging.getLogger('aiohttp.access')
+_logger.addHandler(stdio_handler)
+_logger.setLevel(logging.DEBUG)
+
 bid_store = JSONDictStore('/app/bids.json')
 event_store = JSONDictStore('/app/events.json')
 filled_event_store = JSONDictStore('/app/sponsored_events.json')
 
-app = web.Application()
+app = web.Application(logger=_logger)
 
 async def create_event(event_id):
+    _logger.info("Running task in background")
     event = await generate_random_event()
+    _logger.info(f"Saving event: {event_id}")
     await event_store.set(event_id, event)
 
 async def get_best_bid(bid_store):
@@ -77,7 +87,7 @@ async def unwrap_event(request):
 
     if event and best_bid:
         event_copy = event.copy()
-        print("Found best bid and event template. Bid ID:", best_bid_id)
+        _logger.info("Found best bid and event template. Bid ID:", best_bid_id)
         new_event = await fill_sponsor(best_bid['location'], best_bid['activity'], event_copy)
         await filled_event_store.set(event_id, new_event)
 
@@ -111,7 +121,7 @@ async def list_events(request):
 async def generate_event(request):
     event_id = str(uuid4())
 
-    print("Generating event for ID", event_id)
+    _logger.info("Generating event for ID", event_id)
 
     asyncio.create_task(create_event(event_id))
 
