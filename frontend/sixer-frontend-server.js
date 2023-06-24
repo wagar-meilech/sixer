@@ -23,6 +23,7 @@ function stringify(obj) {
 }
 
 const DEFAULT_PORT = process.env.PORT || 3000;
+const HOST = `0.0.0.0`;
 
 // initialize express.
 const app = express();
@@ -55,8 +56,8 @@ app.post('/customer-preferences', (req, res) => {
     res.send(req);
 });
 
-app.listen(DEFAULT_PORT, () => {
-    console.log(`Sample app listening on port ${DEFAULT_PORT}!`)
+app.listen(DEFAULT_PORT, HOST, () => {
+  console.log(`Sample app listening on ${HOST}:${DEFAULT_PORT}!`)
 });
 
 module.exports = app;
