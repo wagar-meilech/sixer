@@ -145,7 +145,6 @@ function populateEvent(JSONData){
         <p class="mb-1">
           <li>Location: ${element.activity_location}</li>
           <li>Description: ${element.description}</li>
-          <li>Cost: $${element.cost_per_person}</li>
         </p>
       </li>`
     });

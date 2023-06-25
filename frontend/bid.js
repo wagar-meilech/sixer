@@ -8,8 +8,8 @@ async function postBid()
     const postBidRequestPayload = {
         location: modalLoc,
         activity: modalActivity,
-        price: modalCost,
-        partner: modalPartner.toLowerCase() === "yes"
+        price: parseFloat(modalCost),
+        partner: modalPartner.toLowerCase() == "yes"
     };
 
     try {
