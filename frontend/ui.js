@@ -63,11 +63,16 @@ function onSubmit(){
 
     console.log(jsonObject);
 
-    fetchEvent(jsonObject);
+    submitSurvey(jsonObject);
+}
+
+function unwrap() {
+    const id = getQueryParam('id');
+    unwrapEventById(id).then(() => console.log("Finished unwrap"));
 }
 
 
-async function fetchEvent(userPreference) {
+async function submitSurvey(userPreference) {
     try {
         const response = await fetch("https://sixinthecity.ai/api/survey", {
             method: "POST",
@@ -79,7 +84,9 @@ async function fetchEvent(userPreference) {
   
         const result = await response.json();
         console.log("Success:", result);
-        populateEvent(result);
+        const id = result.event_id;
+
+        window.location.href = `/events?id=${id}`;
     } catch (error) {
         console.error("Error:", error);
     }
@@ -99,13 +106,25 @@ async function getEventById(id) {
     }
 }
 
+async function unwrapEventById(id) {
+    try {
+        const response = await fetch("https://sixinthecity.ai/api/event/" + id + "/unwrap", {
+            method: "POST"
+        });
+
+        console.log("Unwraped thing");
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
 function populateEvent(JSONData){
     const event = JSONData.event || JSONData.raw_event;
 
     const itenerary = event.itinerary.activities
 
     var eventInfo = document.getElementById('event-info');
-    var eventInfoHTML = `<h2 id="event-title" class="mb-1">${event.itinerary.activities}</h2>
+    var eventInfoHTML = `<h2 id="event-title" class="mb-1">${event.itinerary.event_name}</h2>
 
     <li>Group size: 6</li>
     <li>Transportation: ${event.transportation}</li>
