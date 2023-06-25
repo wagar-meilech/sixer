@@ -9,7 +9,7 @@ async function postBid()
         location: modalLoc,
         activity: modalActivity,
         price: modalCost,
-        partner: modalPartner === (undefined || modalPartner !== "yes")? false : true
+        partner: modalPartner.toLowerCase() === "yes"
     };
 
     try {
